@@ -29,12 +29,11 @@ src="https://www.facebook.com/tr?id=1479850617500932&ev=PageView&noscript=1"
   gtag('config', 'AW-18415593651');
 </script>
 <script>
-function pddTrackLead(source){
-  try{ if (typeof fbq === 'function') { fbq('track','Lead'); } }catch(e){}
-  try{ if (typeof gtag === 'function') { gtag('event','conversion', {'send_to':'AW-18415593651'}); } }catch(e){}
-}
+/* Le tracking (Facebook Lead + Google Ads conversion) est fait
+   sur la page /merci après soumission réussie via Netlify Forms.
+   Cette fonction est gardée uniquement pour compatibilité et
+   ne bloque pas la soumission du formulaire. */
 function pddTrackFormSubmit(form){
-  pddTrackLead('form');
   return true;
 }
 </script>
@@ -789,9 +788,9 @@ footer:not(#pdd-lp1):not(#pdd-lp1 *){display:none !important;}
           <span class="modal-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Réponse sous 24h</span>
         </div>
         <div class="modal-body">
-          <form class="modal-form" action="https://formspree.io/f/maeynpqz" method="POST" onsubmit="pddTrackFormSubmit(this)">
-            <input type="hidden" name="_subject" value="Nouvelle demande - Generation de leads qualifies">
-            <input type="hidden" name="_next" value="https://vinojan-rajakanthan.systeme.io/plus-de-devis?merci=1">
+          <form class="modal-form" name="lead-form" method="POST" action="/merci" data-netlify="true" netlify-honeypot="bot-field" onsubmit="pddTrackFormSubmit(this)">
+            <input type="hidden" name="form-name" value="lead-form">
+            <p style="display:none;"><label>Ne pas remplir : <input name="bot-field"></label></p>
             <input type="hidden" name="Offre" value="Generation de leads qualifies">
             <div class="modal-field">
               <span class="field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="1"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01"/></svg></span>
