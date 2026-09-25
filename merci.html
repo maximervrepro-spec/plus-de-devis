@@ -33,11 +33,14 @@ src="https://www.facebook.com/tr?id=1479850617500932&ev=Lead&noscript=1"
   gtag('js', new Date());
   gtag('config', 'AW-18415593651');
 
-  /* Conversion Google Ads : envoi de formulaire réussi.
-     Comme l'action de conversion Google Ads est configurée en
-     "Chargement de page" avec l'URL contenant "/merci", elle
-     se déclenchera automatiquement à l'arrivée sur cette page.
-     Le gtag('config') ci-dessus suffit pour ça. */
+  /* Conversion Google Ads : Envoi de formulaire de lead (manuel).
+     Déclenchée directement au chargement de cette page, sans
+     dépendre de la détection automatique par correspondance d'URL. */
+  gtag('event', 'conversion', {
+      'send_to': 'AW-18415593651/Az-KCPGcy4QdELPRns1E',
+      'value': 1.0,
+      'currency': 'EUR'
+  });
 </script>
 
 <style>
